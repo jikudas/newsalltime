@@ -2,7 +2,7 @@
 include 'config.php';
 $errors = array();
 if(empty($_FILES['new-image']['name'])) {
-    $file_name = $_FILES['old-image'];
+    $file_name = $_POST['old-image'];
 } else {
 $file_name = $_FILES['new-image']['name'];
 $file_size = $_FILES['new-image']['size'];
@@ -28,7 +28,7 @@ if (empty($errors) == true) {
 }
 
 $sql = "UPDATE post SET title = '{$_POST['post_title']}', description = '{$_POST['postdesc']}', category = '{$_POST['category']}', post_img = '{$file_name}' WHERE post_id = {$_POST['post_id']} ";
-
+// die();
 $result = mysqli_query($conn, $sql);
 
 if($result) {
